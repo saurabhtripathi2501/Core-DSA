@@ -2,17 +2,12 @@ class Solution {
 public:
     int minStartValue(vector<int>& nums) {
         int n = nums.size();
-        int sum = 0;
-        int i,j ;
-        for(i = 1; i<INT_MAX; i++){
-            sum += i;
-            for(j=0; j<n ;j++){
-                sum += nums[j];
-                if(sum<1) break;
-            }
-            if(j==n) break;
-            else sum = 0;
+        int currentSum = 0;
+        int mini = 0;
+        for(int i = 0; i<n ;i++){
+            currentSum += nums[i];
+            mini = min(mini,currentSum);
         }
-        return i;
+        return 1-mini;
     }
 };
